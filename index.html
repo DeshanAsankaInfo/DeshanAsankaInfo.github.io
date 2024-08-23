@@ -1,7 +1,210 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deshana Sanka - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        header {
+            background-color: #1a1a1d;
+            padding: 20px 0;
+            color: #fff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+        }
+
+        #hero {
+            background-color: #4e4e50;
+            color: #fff;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        #hero .highlight {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        .btn {
+            background-color: #f39c12;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .section-padding {
+            padding: 60px 0;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        #projects .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .project-card img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        #skills .skills-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #1a1a1d;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>GitHub Pages.</p>
+    <header>
+        <div class="container">
+            <h1>Deshana Sanka</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h2>Welcome to My Portfolio</h2>
+            <p>Designing the future with <span class="highlight">3D/2D Characters</span>, <span class="highlight">Game Assets</span>, and cutting-edge <span class="highlight">AI Programs</span>.</p>
+            <a href="#projects" class="btn">Explore My Work</a>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>I am Deshana Sanka, a passionate software engineer with a deep interest in design and artificial intelligence. My expertise lies in creating captivating 3D/2D characters, game assets, and innovative AI programs that push the boundaries of technology and creativity.</p>
+        </div>
+    </section>
+
+    <section id="projects" class="section-padding">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <img src="images/project1.jpg" alt="Project 1">
+                    <h3>3D Character Design</h3>
+                    <p>A fully rigged 3D character designed for a next-gen video game.</p>
+                </div>
+                <div class="project-card">
+                    <img src="images/project2.jpg" alt="Project 2">
+                    <h3>AI-Powered Game Asset Creation</h3>
+                    <p>Utilizing AI to create unique and adaptive game assets.</p>
+                </div>
+                <div class="project-card">
+                    <img src="images/project3.jpg" alt="Project 3">
+                    <h3>Illustrations & Concept Art</h3>
+                    <p>High-quality illustrations and concept art for various game projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section-padding">
+        <div class="container">
+            <h2>Skills</h2>
+            <ul class="skills-list">
+                <li>3D Modeling & Rigging</li>
+                <li>2D Character Design</li>
+                <li>Game Asset Development</li>
+                <li>Artificial Intelligence Programming</li>
+                <li>Python, JavaScript, C++</li>
+                <li>Machine Learning & Data Science</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Let's collaborate!</p>
+            <a href="mailto:your-email@example.com" class="btn">Get in Touch</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Deshana Sanka. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add any necessary interactivity here
+    </script>
 </body>
 </html>
