@@ -3,208 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deshana Sanka - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Your Portfolio</title>
     <style>
-        * {
+        body, html {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            background-color: #323345;
+            color: white;
         }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-        }
-
-        header {
-            background-color: #1a1a1d;
-            padding: 20px 0;
-            color: #fff;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-        }
-
-        nav ul {
-            list-style: none;
+        .navbar {
+            background-color: #323345;
+            padding: 0.5rem 5rem; /* Adjusted padding for left and right */
             display: flex;
-            justify-content: flex-end;
+            justify-content: center; /* Center the content horizontally */
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+            position: sticky; /* Sticky navbar */
+            top: 0;
+            z-index: 1000; /* Keeps the navbar on top */
         }
-
-        nav ul li {
-            margin-left: 20px;
+        .navbar-content {
+            width: 100%;
+            max-width: 1200px; /* Limits the width of the content */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-
-        nav ul li a {
-            color: #fff;
+        .logo img {
+            width: 130px;
+            height: auto;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem; /* Spacing between links */
+        }
+        .nav-links a {
+            color: #A3AAAE;
             text-decoration: none;
-            font-weight: 400;
-        }
-
-        #hero {
-            background-color: #4e4e50;
-            color: #fff;
-            text-align: center;
-            padding: 100px 0;
-        }
-
-        #hero .highlight {
-            color: #f39c12;
-            font-weight: bold;
-        }
-
-        .btn {
-            background-color: #f39c12;
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
+            padding: 0.5rem 1rem;
             border-radius: 5px;
-            margin-top: 20px;
-            display: inline-block;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
         }
-
-        .section-padding {
-            padding: 60px 0;
+        .nav-links a:hover {
+            background-color: #666CDB;
+            color: #fff; /* White text on hover */
         }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
+        .landing-page {
+            display: flex;
+            flex-direction: column; /* Stack items vertically on small screens */
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Full viewport height */
+            padding: 5rem; /* Padding around the content */
+            box-sizing: border-box; /* Includes padding in the element's total width and height */
+            text-align: center; /* Center-align text */
         }
-
-        #projects .project-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .project-card {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .project-card img {
+        .landing-page .text {
             max-width: 100%;
-            border-radius: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 2rem; /* Space between text and image */
         }
-
-        #skills .skills-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 20px;
+        .landing-page .text h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-align: left;
         }
-
-        footer {
-            background-color: #1a1a1d;
-            color: #fff;
+        .landing-page .text p {
+            font-size: 1.25rem;
+            margin-top: 1rem;
+            text-align: left;
+        }
+        .landing-page .profile-img {
+            width: 100%; /* Full width on small screens */
+            max-width: 60%; /* 60% width on larger screens */
             text-align: center;
-            padding: 20px 0;
-            margin-top: 50px;
         }
-
-        footer p {
-            font-size: 0.9rem;
+        .landing-page .profile-img img {
+            width: 70%;
+            height: auto;
+            border-radius: 10px; /* Optional: Adds rounded corners to the image */
+        }
+        @media(min-width: 768px) {
+            .landing-page {
+                flex-direction: row; /* Align items horizontally on larger screens */
+                justify-content: space-between;
+            }
+            .landing-page .text {
+                max-width: 40%; /* Adjusted to make room for the image */
+            }
+            .landing-page .profile-img {
+                max-width: 60%; /* 60% width on larger screens */
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Deshana Sanka</h1>
-            <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section id="hero">
-        <div class="container">
-            <h2>Welcome to My Portfolio</h2>
-            <p>Designing the future with <span class="highlight">3D/2D Characters</span>, <span class="highlight">Game Assets</span>, and cutting-edge <span class="highlight">AI Programs</span>.</p>
-            <a href="#projects" class="btn">Explore My Work</a>
-        </div>
-    </section>
-
-    <section id="about" class="section-padding">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>I am Deshana Sanka, a passionate software engineer with a deep interest in design and artificial intelligence. My expertise lies in creating captivating 3D/2D characters, game assets, and innovative AI programs that push the boundaries of technology and creativity.</p>
-        </div>
-    </section>
-
-    <section id="projects" class="section-padding">
-        <div class="container">
-            <h2>Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <img src="images/project1.jpg" alt="Project 1">
-                    <h3>3D Character Design</h3>
-                    <p>A fully rigged 3D character designed for a next-gen video game.</p>
-                </div>
-                <div class="project-card">
-                    <img src="images/project2.jpg" alt="Project 2">
-                    <h3>AI-Powered Game Asset Creation</h3>
-                    <p>Utilizing AI to create unique and adaptive game assets.</p>
-                </div>
-                <div class="project-card">
-                    <img src="images/project3.jpg" alt="Project 3">
-                    <h3>Illustrations & Concept Art</h3>
-                    <p>High-quality illustrations and concept art for various game projects.</p>
-                </div>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#testimonial">Testimonial</a>
+                <a href="#contact">Contact Me</a>
             </div>
         </div>
-    </section>
-
-    <section id="skills" class="section-padding">
-        <div class="container">
-            <h2>Skills</h2>
-            <ul class="skills-list">
-                <li>3D Modeling & Rigging</li>
-                <li>2D Character Design</li>
-                <li>Game Asset Development</li>
-                <li>Artificial Intelligence Programming</li>
-                <li>Python, JavaScript, C++</li>
-                <li>Machine Learning & Data Science</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="contact" class="section-padding">
-        <div class="container">
-            <h2>Contact Me</h2>
-            <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Let's collaborate!</p>
-            <a href="mailto:your-email@example.com" class="btn">Get in Touch</a>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Deshana Sanka. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Add any necessary interactivity here
-    </script>
+    </nav>
+    <main>
+        <section class="landing-page">
+            <div class="text">
+                <h1>I'm <span>Deshan Asanka</span></h1>
+                    <p>Python Developer & ERPNext Consultant</p>
+                    <a href="#contact" class="cta-button">Contact Me</a>
+            </div>
+            <div class="profile-img">
+                <img src="profile.png" alt="Profile Image">
+            </div>
+        </section>
+    </main>
 </body>
 </html>
