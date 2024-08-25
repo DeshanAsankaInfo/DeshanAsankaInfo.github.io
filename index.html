@@ -3,112 +3,741 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Portfolio</title>
+    <title>Deshan Asanka - Portfolio</title>
     <style>
         body, html {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-color: #323345;
+            background-color: #f1effc;
             color: white;
+            scroll-behavior: smooth;
         }
+
+        /* Navbar */
         .navbar {
-            background-color: #323345;
-            padding: 0.5rem 5rem; /* Adjusted padding for left and right */
+            background-color: #ffffff;
+            padding: 0.5rem 5rem;
             display: flex;
-            justify-content: center; /* Center the content horizontally */
+            justify-content: center;
             align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
-            position: sticky; /* Sticky navbar */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
             top: 0;
-            z-index: 1000; /* Keeps the navbar on top */
+            z-index: 1000;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
+
+        .navbar.scrolled {
+            background-color: #f1effc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
         .navbar-content {
             width: 100%;
-            max-width: 1200px; /* Limits the width of the content */
+            max-width: 1200px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .logo img {
-            width: 130px;
+            width: 60px;
             height: auto;
         }
+
         .nav-links {
             display: flex;
-            gap: 1.5rem; /* Spacing between links */
+            gap: 1.5rem;
         }
+
         .nav-links a {
-            color: #A3AAAE;
+            color: #444;
             text-decoration: none;
             padding: 0.5rem 1rem;
             border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+            transition: background-color 0.3s, color 0.3s;
         }
+
         .nav-links a:hover {
-            background-color: #666CDB;
-            color: #fff; /* White text on hover */
+            background-color: #9281e7;
+            color: #fff;
         }
+
+        /* Landing Page */
         .landing-page {
             display: flex;
-            flex-direction: column; /* Stack items vertically on small screens */
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh; /* Full viewport height */
-            padding: 5rem; /* Padding around the content */
-            box-sizing: border-box; /* Includes padding in the element's total width and height */
-            text-align: center; /* Center-align text */
-        }
-        .landing-page .text {
-            max-width: 100%;
-            margin-bottom: 2rem; /* Space between text and image */
-        }
-        .landing-page .text h1 {
-            font-size: 2.5rem;
-            margin: 0;
-            text-align: left;
-        }
-        .landing-page .text p {
-            font-size: 1.25rem;
-            margin-top: 1rem;
-            text-align: left;
-        }
-        .landing-page .profile-img {
-            width: 100%; /* Full width on small screens */
-            max-width: 60%; /* 60% width on larger screens */
+            height: 90vh;
+            padding: 0 5rem;
+            box-sizing: border-box;
             text-align: center;
         }
-        .landing-page .profile-img img {
-            width: 70%;
-            height: auto;
-            border-radius: 10px; /* Optional: Adds rounded corners to the image */
+
+        .landing-page .text, .landing-page .profile-img {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+            animation-delay: 0.2s;
         }
+
+        .landing-page .text h1 {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            margin: 0;
+            text-align: left;
+            color: #333;
+        }
+
+        .landing-page .text h1 span {
+            color: #6c63ff;
+        }
+
+        .landing-page .text h2 {
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: #333;
+            margin: 0.5rem 0;
+            text-align: left;
+        }
+
+        .landing-page .text p {
+            font-size: 1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0.5rem auto 1.5rem;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .landing-page .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: left;
+        }
+
+        .landing-page .buttons a {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .landing-page .buttons .btn-primary {
+            background-color: #6c63ff;
+            color: #fff;
+        }
+
+        .landing-page .buttons .btn-primary:hover {
+            background-color: #574cdd;
+        }
+
+        .landing-page .buttons .btn-secondary {
+            background-color: transparent;
+            color: #6c63ff;
+            border: 2px solid #6c63ff;
+        }
+
+        .landing-page .buttons .btn-secondary:hover {
+            background-color: #6c63ff;
+            color: #fff;
+        }
+
+        .landing-page .profile-img {
+            width: 100%;
+            max-width: 60%;
+            text-align: center;
+        }
+
+        .landing-page .profile-img img {
+            width: 98%;
+            height: auto;
+            border-radius: 10px;
+        }
+
         @media(min-width: 768px) {
             .landing-page {
-                flex-direction: row; /* Align items horizontally on larger screens */
+                flex-direction: row;
                 justify-content: space-between;
+                align-items: center;
             }
             .landing-page .text {
-                max-width: 40%; /* Adjusted to make room for the image */
+                max-width: 45%;
             }
             .landing-page .profile-img {
-                max-width: 60%; /* 60% width on larger screens */
+                max-width: 55%;
             }
         }
+
+        /* Social Links Section */
+        .social-section {
+            text-align: center;
+            padding-bottom: 3rem;
+            background-color: #f1effc;
+        }
+
+        .social-section h4 {
+            font-size: 1rem;
+            color: #A3AAAE;
+            margin-bottom: 1.5rem;
+            font-weight: normal;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .social-links img {
+            width: 110px;
+            height: auto;
+            transition: transform 0.3s;
+        }
+
+        .social-links img:hover {
+            transform: scale(1.1);
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: #ffffff;
+            color: #ffffff;
+            padding: 4rem 5rem;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .about-section .about-img {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+
+        .about-section .about-img img {
+            max-width: 100%;
+        }
+
+        .about-section .about-content {
+            flex: 2 1 500px;
+            padding: 2rem;
+        }
+
+        .about-section .about-content h2 {
+            font-size: 2.5rem;
+            color: #6c63ff;
+            margin-bottom: 1rem;
+        }
+
+        .about-section .about-content h3 {
+            font-size: 1.5rem;
+            color: #000;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-section .about-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .about-section .about-content .btn-primary {
+            background-color: #6c63ff;
+            color: #ffffff;
+            border-radius: 50px;
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .about-section .about-content .btn-primary:hover {
+            background-color: #574cdd;
+            color: #f1effc;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            background-color: #f1effc;
+            color: #333;
+            padding: 4rem 5rem;
+            text-align: center;
+        }
+
+        .projects-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #6c63ff;
+            font-weight: 600;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            justify-items: center;
+        }
+
+        .project-card {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+            text-align: left;
+        }
+
+        .project-card h3 {
+            font-size: 1.25rem;
+            color: #000;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .project-card a {
+            font-size: 1rem;
+            color: #9281e7;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .project-card a:hover {
+            color: #9281e7;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .view-all-projects {
+            display: inline-block;
+            margin-top: 2rem;
+            font-size: 1.25rem;
+            color: #aca1ee;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .view-all-projects:hover {
+            color: #9281e7;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background-color: #ffffff;
+            color: #fff;
+            padding: 4rem 5rem;
+            text-align: center;
+        }
+
+        .skills-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #6c63ff;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+            justify-items: center;
+        }
+
+        .skill-card {
+            background-color: #f1effc;
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 150px;
+        }
+
+        .skill-card img {
+            width: 50px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card p {
+            font-size: 1rem;
+            color: #666;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            background-color: #e1e1e1;
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Experience Section */
+        .experience-section {
+            background-color: #f1effc;
+            color: #333;
+            padding: 4rem 5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .experience-section h2 {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #6c63ff;
+            font-weight: 600;
+        }
+
+        .experience-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-left: 80px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 135px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #6c63ff;
+            z-index: 1;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-dates {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+
+        .start-date,
+        .end-date {
+            background-color: #6c63ff;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: bold;
+            min-width: 80px;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            margin-left: -75px;
+        }
+
+        .separator {
+            color: #6c63ff;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            margin-left: -75px;
+        }
+
+        .timeline-content {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+            margin-left: 80px;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+            animation-delay: 0.2s;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-icons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .company-icons,
+        .software-icons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .company-icons img,
+        .software-icons img {
+            width: 40px;
+            height: auto;
+            transition: transform 0.3s;
+        }
+
+        .company-icons img:hover,
+        .software-icons img:hover {
+            transform: scale(1.1);
+        }
+
+        .experience-details {
+            padding-top: 1rem;
+            border-top: 1px solid #e1e1e1;
+        }
+
+        .experience-details h3 {
+            font-size: 1.25rem;
+            color: #000;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-details p {
+            font-size: 1rem;
+            color: #666;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .timeline-dates {
+                top: 0;
+                transform: translateY(0);
+                left: 0;
+            }
+            .timeline-content {
+                margin-left: 0;
+                padding-left: 40px;
+                width: 100%;
+            }
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: #aca1ee;
+            padding: 3rem 1rem;
+            text-align: center;
+            color: #fff;
+        }
+
+        .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            position: relative;
+            display: inline-block;
+        }
+
+        .contact-section h2::before,
+        .contact-section h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: #9281e7;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .contact-section h2::before {
+            left: -60px;
+        }
+
+        .contact-section h2::after {
+            right: -60px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-info div {
+            background-color: #e3e1f9;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            min-width: 250px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-info div:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info div img {
+            width: 24px;
+            height: auto;
+        }
+
+        .contact-info div p {
+            margin: 0;
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .contact-info div a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .contact-info div a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .contact-info {
+                flex-direction: column;
+            }
+            .contact-info div {
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Social Section in Contact */
+        .social-section2 {
+            background-color: transparent;
+            padding-top: 1rem;
+        }
+
+        .social-links img {
+            width: 100px;
+            height: auto;
+            margin: 0 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .social-links img:hover {
+            transform: scale(1.2);
+        }
+
+        /* Thank You Section */
+        .thank-you-section {
+            background-color: #9281e7;
+            color: #fff;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .thank-you-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .thank-you-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .thank-you-section .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .thank-you-section .social-links a img {
+            width: 24px;
+            height: auto;
+            transition: transform 0.3s;
+        }
+
+        .thank-you-section .social-links a img:hover {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 600px) {
+            .thank-you-section h2 {
+                font-size: 2rem;
+            }
+            .thank-you-section p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="navbar-content">
             <div class="logo">
-                <img src="logo.png" alt="Logo">
+                <a href="https://deshanasankainfo.github.io/"><img src="logo.png" alt="Deshan Asanka Logo"></a>
             </div>
             <div class="nav-links">
                 <a href="#about">About</a>
                 <a href="#projects">Projects</a>
                 <a href="#skills">Skills</a>
                 <a href="#experience">Experience</a>
-                <a href="#testimonial">Testimonial</a>
                 <a href="#contact">Contact Me</a>
             </div>
         </div>
@@ -116,14 +745,219 @@
     <main>
         <section class="landing-page">
             <div class="text">
-                <h1>I'm <span>Deshan Asanka</span></h1>
-                    <p>Python Developer & ERPNext Consultant</p>
-                    <a href="#contact" class="cta-button">Contact Me</a>
+                <h1>Hi, I'm <span>Deshan Asanka</span></h1>
+                <h2>Python Developer & ERPNext Consultant</h2>
+                <p>Welcome to my personal portfolio where I showcase my projects, skills, and experiences in software development and consulting. Let's work together to create something amazing!</p>
+                <div class="buttons">
+                    <a href="#contact" class="btn-primary">Let's Talk</a>
+                    <a href="#projects" class="btn-secondary">See Projects</a>
+                </div>
             </div>
             <div class="profile-img">
-                <img src="profile.png" alt="Profile Image">
+                <img src="profile.png" alt="Deshan Asanka Profile Image">
             </div>
         </section>
+
+        <!-- Social Links Section -->
+        <section class="social-section">
+            <h4>Check Out Me</h4>
+            <div class="social-links">
+                <a href="https://github.com/DeshanAsankaInfo"><img src="github.png" alt="Github"></a>
+                <a href="https://www.linkedin.com/in/deshan-asanka-145b6326a/"><img src="linkedin.png" alt="LinkedIn"></a>
+                <a href="https://www.behance.net/KINGart_STUDIOS"><img src="behance.png" alt="Behance"></a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <div class="about-img">
+                <img src="profile.png" alt="About Me Image">
+            </div>
+            <div class="about-content">
+                <h2>About <span style="color: #fff;">Me</span></h2>
+                <h3>Python Developer & ERPNext Consultant</h3>
+                <p>
+                    I am Deshan Asanka, a passionate Python Developer and ERPNext Consultant with a strong background in software development, system integration, and business process automation. 
+                    I specialize in creating robust, scalable solutions that help businesses streamline their operations and achieve their goals.
+                    Let's connect and see how we can work together to bring your ideas to life!
+                </p>
+                <a href="#contact" class="btn-primary">Read More</a>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section" id="projects">
+            <h2>Latest Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="project1.png" alt="Project 1">
+                    <div class="project-info">
+                        <h3>Project Title 1</h3>
+                        <p>A brief description of what this project is about.</p>
+                        <a href="project1.html">More Details</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="project2.png" alt="Project 2">
+                    <div class="project-info">
+                        <h3>Project Title 2</h3>
+                        <p>A brief description of what this project is about.</p>
+                        <a href="project2.html">More Details</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="project3.png" alt="Project 3">
+                    <div class="project-info">
+                        <h3>Project Title 3</h3>
+                        <p>A brief description of what this project is about.</p>
+                        <a href="project3.html">More Details</a>
+                    </div>
+                </div>
+            </div>
+            <a href="all-projects.html" class="view-all-projects">View All Projects</a>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills-section" id="skills">
+            <h2>My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <img src="figma.png" alt="figma">
+                    <p>Figma</p>
+                </div>
+                <div class="skill-card">
+                    <img src="office.png" alt="Office">
+                    <p>Office</p>
+                </div>
+                <div class="skill-card">
+                    <img src="git.png" alt="GitHub">
+                    <p>GitHub</p>
+                </div>
+                <div class="skill-card">
+                    <img src="python.png" alt="Python">
+                    <p>Python</p>
+                </div>
+                <div class="skill-card">
+                    <img src="html.png" alt="HTML">
+                    <p>HTML</p>
+                </div>
+                <div class="skill-card">
+                    <img src="css.png" alt="CSS">
+                    <p>CSS</p>
+                </div>
+                <div class="skill-card">
+                    <img src="js.png" alt="JavaScript">
+                    <p>JavaScript</p>
+                </div>
+                <div class="skill-card">
+                    <img src="mysql.png" alt="MySql">
+                    <p>MySql</p>
+                </div>
+                <div class="skill-card">
+                    <img src="sqlite.png" alt="Sqlite">
+                    <p>Sqlite</p>
+                </div>
+                <div class="skill-card">
+                    <img src="blender.png" alt="Blender">
+                    <p>Blender</p>
+                </div>
+                <div class="skill-card">
+                    <img src="unity.png" alt="Unity">
+                    <p>Unity</p>
+                </div>
+                <div class="skill-card">
+                    <img src="canva.png" alt="Canva">
+                    <p>Canva</p>
+                </div>
+                <div class="skill-card">
+                    <img src="illustrator.png" alt="Illustrator">
+                    <p>Illustrator</p>
+                </div>
+                <div class="skill-card">
+                    <img src="photoshop.png" alt="Photoshop">
+                    <p>Photoshop</p>
+                </div>
+                <div class="skill-card">
+                    <img src="powerpoint.png" alt="PowerPoint">
+                    <p>PowerPoint</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="experience-section" id="experience">
+            <h2>My Experience</h2>
+            <div class="experience-timeline">
+                <div class="timeline-line"></div>
+                <div class="timeline-item">
+                    <div class="timeline-dates">
+                        <span class="start-date">2021</span>
+                        <span class="separator">-</span>
+                        <span class="end-date">2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="experience-icons">
+                            <div class="company-icons">
+                                <img src="fiverr.png" alt="Fiverr" title="Fiverr">
+                            </div>
+                            <div class="software-icons">
+                                <img src="illustrator.png" alt="Adobe Illustrator" title="Adobe Illustrator">
+                                <img src="photoshop.png" alt="Adobe Photoshop" title="Adobe Photoshop">
+                                <img src="powerpoint.png" alt="Microsoft PowerPoint" title="Microsoft PowerPoint">
+                            </div>
+                        </div>
+                        <div class="experience-details">
+                            <h3>Freelancer at Fiverr</h3>
+                            <p>Specialized in Mascot Logo Design and Presentation Design. Delivered high-quality design solutions to a diverse range of clients across various industries.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Me Section -->
+        <section class="contact-section" id="contact">
+            <h2>Contact Me</h2>
+            <div class="contact-info">
+                <div>
+                    <img src="email.png" alt="Email">
+                    <p><a href="mailto:deshanasanka.info@gmail.com">deshanasanka.info@gmail.com</a></p>
+                </div>
+                <div>
+                    <img src="mobile.png" alt="Phone">
+                    <p><a href="tel:+94767754969">(+94) 76 775 4969</a></p>
+                </div>
+                <div>
+                    <img src="address.png" alt="Location">
+                    <p>29/A/63, Kethsirigama, Koknahara, Ampara</p>
+                </div>
+            </div>
+            <section class="social-section2">
+                <div class="social-links">
+                    <a href="https://github.com/DeshanAsankaInfo"><img src="github.png" alt="Github"></a>
+                    <a href="https://www.linkedin.com/in/deshan-asanka-145b6326a/"><img src="linkedin.png" alt="LinkedIn"></a>
+                    <a href="https://www.behance.net/KINGart_STUDIOS"><img src="behance.png" alt="Behance"></a>
+                </div>
+            </section>
+        </section>
+
+        <!-- Thank You Section -->
+        <section class="thank-you-section">
+            <h2>Thank You for Visiting!</h2>
+            <p>I appreciate you taking the time to explore my portfolio. Let's connect on social media!</p>
+        </section>
+
     </main>
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
