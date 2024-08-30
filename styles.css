@@ -199,6 +199,7 @@ body, html {
     transform: scale(1.1);
 }
 
+
 /* About Section */
 .about-section {
     background-color: #ffffff;
@@ -257,6 +258,22 @@ body, html {
     background-color: #574cdd;
     color: #f1effc;
 }
+/* Artstation Section */
+
+
+.artstation-links img {
+    width: 200px;
+    height: auto;
+    transition: transform 0.3s;
+    border-radius: 10px;
+    margin-top: -1rem;
+    margin-bottom: -1rem;
+
+}
+
+.artstation-links img:hover {
+    transform: scale(1.1);
+}
 
 /* Projects Section */
 .projects-section {
@@ -272,6 +289,12 @@ body, html {
     margin-bottom: 3rem;
     color: #6c63ff;
     font-weight: 600;
+}
+.projects-section h4 {
+    font-size: 1rem;
+    color: #574cdd;
+    font-weight: normal;
+    margin-top: 2rem;
 }
 
 .projects-grid {
@@ -366,6 +389,13 @@ body, html {
     padding: 4rem 5rem;
     text-align: center;
     padding-top: 0.5rem;
+
+}
+.all-projects-section h4 {
+    font-size: 1rem;
+    color: #574cdd;
+    font-weight: normal;
+    margin-top: 2rem;
 }
 
 .all-projects-section h2 {
